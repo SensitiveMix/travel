@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import App from './App'
+import VueAwesomeSwiper from 'vue-awesome-swiper'
 // 解决点击延迟的问题
 // import fastClick from 'fastclick'
 import router from './router'
@@ -7,9 +8,14 @@ import router from './router'
 import './assets/styles/border.css'
 // 移动端样式适配
 import './assets/styles/reset.css'
+import 'styles/iconfont.css'
+
+// import style
+import 'swiper/css/swiper.css'
 
 Vue.config.productionTip = false
 // fastClick.attach(document)
+Vue.use(VueAwesomeSwiper)
 
 new Vue({
   router,
