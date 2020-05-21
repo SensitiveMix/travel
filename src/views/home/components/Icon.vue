@@ -1,11 +1,15 @@
 <template>
     <div class="icons">
-        <div class="icon-item" v-for="item in list" :key="item.key">
+      <swiper :options="swiperOption">
+        <swiper-slide v-for="(page, index) in pages" :key="index">
+        <div class="icon-item" v-for="item in page" :key="item.key">
             <div class="icon-img">
                 <img class='icon-img-content' :src="item.imgUrl" />
             </div>
             <p class="icon-desc">{{item.desc}}</p>
         </div>
+        </swiper-slide>
+      </swiper>
     </div>
 </template>
 
@@ -14,6 +18,28 @@ export default {
   name: 'HomeIcon',
   props: {
     list: Array
+  },
+  data () {
+    return {
+      swiperOption: {
+        autoplay: true
+      }
+    }
+  },
+  computed: {
+    pages () {
+      const pages = []
+      this.list.forEach((item, index) => {
+        const page = Math.floor(index / 8)
+        if (!pages[page]) {
+          pages[page] = []
+        }
+
+        pages[page].push(item)
+      })
+
+      return pages
+    }
   }
 }
 </script>
@@ -21,11 +47,14 @@ export default {
 <style lang="stylus" scoped>
   @import '~styles/mixins.styl'
   @import '~styles/varibles.styl';
+  .icons >>> .swiper-container
+    height 0
+    padding-bottom 50%
   .icons
+    // margin-top 0.1rem
     overflow hidden
     width 100%
     hight 0
-    padding-bottom 50%
     background-color green
     .icon-item
         overflow hidden
@@ -43,6 +72,7 @@ export default {
             bottom .44rem
             background blue
             box-sizing border-box
+            padding 0.1rem
             .icon-img-content
                 display block
                 margin 0 auto
@@ -56,4 +86,5 @@ export default {
             line-height .44rem
             text-align center
             color #333
+            ellipsis()
 </style>
