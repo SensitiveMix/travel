@@ -8,5 +8,20 @@ module.exports = {
     config.resolve.alias
       .set('@', resolve('src'))
       .set('styles', resolve('src/assets/styles'))
+  },
+  publicPath: './',
+  devServer: {
+    host: 'localhost',
+    port: 8080,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8080',
+        // changeOrigin: true,
+        // ws: true,
+        pathRewrite: {
+          '^/api': '/mock'
+        }
+      }
+    }
   }
 }

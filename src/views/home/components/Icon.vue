@@ -22,7 +22,8 @@ export default {
   data () {
     return {
       swiperOption: {
-        autoplay: true
+        autoplay: true,
+        loop: true
       }
     }
   },
@@ -51,16 +52,14 @@ export default {
     height 0
     padding-bottom 50%
   .icons
-    // margin-top 0.1rem
+    margin-top 0.1rem
     overflow hidden
     width 100%
     hight 0
-    background-color green
     .icon-item
         overflow hidden
         position relative
         float left
-        background red
         height 0
         width 25%
         padding-bottom 25%
@@ -70,7 +69,6 @@ export default {
             left 0
             right 0
             bottom .44rem
-            background blue
             box-sizing border-box
             padding 0.1rem
             .icon-img-content
