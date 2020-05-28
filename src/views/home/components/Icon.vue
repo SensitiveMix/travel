@@ -2,12 +2,12 @@
     <div class="icons">
       <swiper :options="swiperOption">
         <swiper-slide v-for="(page, index) in pages" :key="index">
-        <div class="icon-item" v-for="item in page" :key="item.key">
-            <div class="icon-img">
-                <img class='icon-img-content' :src="item.imgUrl" />
-            </div>
-            <p class="icon-desc">{{item.desc}}</p>
-        </div>
+          <div class="icon-item" v-for="item of page" :key="item.id">
+              <div class="icon-img">
+                  <img class='icon-img-content' :src="item.imgUrl" />
+              </div>
+              <p class="icon-desc">{{item.desc}}</p>
+          </div>
         </swiper-slide>
       </swiper>
     </div>
@@ -22,8 +22,7 @@ export default {
   data () {
     return {
       swiperOption: {
-        autoplay: true,
-        loop: true
+        autoplay: true
       }
     }
   },

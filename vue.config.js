@@ -8,10 +8,17 @@ module.exports = {
     config.resolve.alias
       .set('@', resolve('src'))
       .set('styles', resolve('src/assets/styles'))
+
+    config
+      .plugin('html')
+      .tap(args => {
+        args[0].title = '去哪儿'
+        return args
+      })
   },
   publicPath: './',
   devServer: {
-    host: 'localhost',
+    // host: 'localhost',
     port: 8080,
     proxy: {
       '/api': {
