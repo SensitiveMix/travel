@@ -8,7 +8,7 @@
                 <div class="list-item">
                     <div class="list-btn-wapper">
                         <div class="button">
-                            南京
+                            {{this.$store.state.city}}
                         </div>
                     </div>
                 </div>
@@ -18,18 +18,28 @@
                     热门城市
                 </div>
                 <div class="list-item">
-                    <div class="list-btn-wapper" v-for="item of hotCities" :key="item.id">
+                    <div
+                        class="list-btn-wapper"
+                        v-for="item of hotCities"
+                        :key="item.id"
+                        @click="handleItemClick(item.name)"
+                    >
                         <div class="button">
                             {{item.name}}
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="center border-topbottom" v-for="(items, index) of cities" :key="index" ref="key">
+            <div class="center border-topbottom" v-for="(items, index) of cities" :key="index" :ref="index">
                 <div class="title">
                     {{index}}
                 </div>
-                <div class="item border-bottom" v-for="item of items" :key="item.id">
+                <div
+                    class="item border-bottom"
+                    v-for="item of items"
+                    :key="item.id"
+                    @click="handleItemClick(item.name)"
+                >
                     {{item.name}}
                 </div>
             </div>
@@ -46,6 +56,15 @@ export default {
     cities: Object,
     hotCities: Array
   },
+  methods: {
+    handleItemClick: function (city) {
+      this.$store.commit('changeCity', city)
+      this.$router.push('/')
+    },
+    test () {
+      alert('test')
+    }
+  },
   watch: {
     letter () {
       if (this.letter) {
@@ -56,7 +75,7 @@ export default {
   },
   mounted () {
     this.$nextTick(() => {
-      this.scroll = new BScroll(this.$refs.wrapper)
+      this.scroll = new BScroll(this.$refs.wrapper, { click: true })
     })
   }
 }
@@ -76,7 +95,7 @@ export default {
         left 0
         right 0
         bottom 0
-        top 1.48rem
+        top 1.65rem
         position absolute
         background #eee
         .title

@@ -1,13 +1,20 @@
 <template>
 <div>
+  <div class="header-wrap">
     <city-header></city-header>
     <city-search></city-search>
+  </div>
     <city-list
       :letter="letter"
       :cities="cities"
       :hotCities="hotCities"
     >
     </city-list>
+    <city-alphabet
+      :letters="cities"
+      @change="handleLetterChange"
+    >
+    </city-alphabet>
 </div>
 </template>
 
@@ -16,6 +23,7 @@ import axios from 'axios'
 import CityHeader from './components/Header'
 import CitySearch from './components/Search'
 import CityList from './components/List'
+import CityAlphabet from './components/Alphabet'
 export default {
   name: 'City',
   data () {
@@ -28,7 +36,8 @@ export default {
   components: {
     CityHeader,
     CitySearch,
-    CityList
+    CityList,
+    CityAlphabet
   },
   methods: {
     getCityInfo () {
@@ -41,6 +50,9 @@ export default {
         this.cities = respData.data.cities
         this.hotCities = respData.data.hotCities
       }
+    },
+    handleLetterChange (data) {
+      this.letter = data
     }
   },
   mounted () {
@@ -51,6 +63,7 @@ export default {
 
 <style lang="stylus" scoped>
   @import '~styles/varibles.styl';
-  .city
-    background-color $bgColor
+  .header-wrap
+    position: fixed
+    width: 100%
 </style>

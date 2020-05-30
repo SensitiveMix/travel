@@ -21,7 +21,7 @@ export default {
     background-color $bgColor
     margin-top -.06rem
     .search-input
-        width 97%
+        width 95%
         line-height .64rem
         height .64rem
         text-align: center

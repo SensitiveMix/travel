@@ -19,8 +19,8 @@ export default {
   @import '~styles/varibles.styl';
   .header
     position relative
-    line-height .68rem
-    height: 0.68rem;
+    line-height .86rem
+    height: 0.86rem;
     width 100%
     color #ffffff
     text-align center
@@ -28,7 +28,7 @@ export default {
     font-size .30rem
     border 0
     .header-icon
-        width .86rem
+        width .80rem
         line-height .86rem
         left 0
         height 0
@@ -36,5 +36,5 @@ export default {
         color #ffffff
         position absolute
         text-align: center
-        font-size .32rem
+        font-size .4rem
 </style>

@@ -13,11 +13,14 @@ import 'styles/iconfont.css'
 // import style
 import 'swiper/css/swiper.css'
 
+import store from './store'
+
 Vue.config.productionTip = false
 // fastClick.attach(document)
 Vue.use(VueAwesomeSwiper)
 
 new Vue({
   router,
+  store,
   render: h => h(App)
 }).$mount('#app')
