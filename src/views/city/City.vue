@@ -2,7 +2,7 @@
 <div>
   <div class="header-wrap">
     <city-header></city-header>
-    <city-search></city-search>
+    <city-search :cities="cities"></city-search>
   </div>
     <city-list
       :letter="letter"
@@ -64,6 +64,6 @@ export default {
 <style lang="stylus" scoped>
   @import '~styles/varibles.styl';
   .header-wrap
-    position: fixed
+    // position: fixed
     width: 100%
 </style>
