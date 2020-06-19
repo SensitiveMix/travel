@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="banner">
+        <div class="banner" @click="handleGallary">
             <img src="http://img1.qunarzz.com/sight/p0/201404/23/04b92c99462687fa1ba45c1b5ba4ad77.jpg_600x330_bf9c4904.jpg" class="banner-img">
             <div class="banner-info">
                 <div class="banner-title">
@@ -12,12 +12,31 @@
                 </div>
             </div>
         </div>
+
+        <common-gallary v-if="showGallary" @close="handleBannerColse"></common-gallary>
     </div>
 </template>
 
 <script>
+import CommonGallary from 'common/gallary/Gallary'
 export default {
-  name: 'DetailBanner'
+  name: 'DetailBanner',
+  components: {
+    CommonGallary
+  },
+  data () {
+    return {
+      showGallary: false
+    }
+  },
+  methods: {
+    handleGallary () {
+      this.showGallary = true
+    },
+    handleBannerColse () {
+      this.showGallary = false
+    }
+  }
 }
 </script>
 
