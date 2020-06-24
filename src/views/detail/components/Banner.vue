@@ -13,16 +13,21 @@
             </div>
         </div>
 
-        <common-gallary v-if="showGallary" @close="handleBannerColse"></common-gallary>
+        <common-fade-transition>
+          <common-gallary v-if="showGallary" @close="handleBannerColse">
+          </common-gallary>
+        </common-fade-transition>
     </div>
 </template>
 
 <script>
 import CommonGallary from 'common/gallary/Gallary'
+import CommonFadeTransition from 'common/fade/Transition'
 export default {
   name: 'DetailBanner',
   components: {
-    CommonGallary
+    CommonGallary,
+    CommonFadeTransition
   },
   data () {
     return {
