@@ -45,11 +45,13 @@ export default {
       } else {
         this.showAbs = true
       }
-      console.log(top)
     }
   },
   mounted () {
     window.addEventListener('scroll', this.handleScroll)
+  },
+  beforeDestroy () {
+    window.removeEventListener('scroll', this.handleScroll)
   }
 }
 </script>
