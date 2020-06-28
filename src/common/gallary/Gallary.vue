@@ -2,8 +2,8 @@
     <div class="container" @click="handleCloseGallary">
         <div class="wrapper">
             <swiper :options="swiperOption">
-                <swiper-slide v-for="item of list" :key="item.id">
-                    <img :src="item.imgUrl" class="swiper-img">
+                <swiper-slide v-for="item of imgs" :key="item.id">
+                    <img :src="item" class="swiper-img">
                 </swiper-slide>
                 <div class="swiper-pagination" slot="pagination"></div>
             </swiper>
@@ -14,16 +14,11 @@
 <script>
 export default {
   name: 'CommonGallary',
+  props: {
+    imgs: Array
+  },
   data () {
     return {
-      list: [
-        {
-          imgUrl: 'http://img1.qunarzz.com/sight/p0/201404/23/04b92c99462687fa1ba45c1b5ba4ad77.jpg_600x330_bf9c4904.jpg'
-        },
-        {
-          imgUrl: 'http://img1.qunarzz.com/sight/p0/201404/23/04b92c99462687fa1ba45c1b5ba4ad77.jpg_600x330_bf9c4904.jpg'
-        }
-      ],
       swiperOption: {
         pagination: {
           el: '.swiper-pagination',

@@ -1,20 +1,20 @@
 <template>
     <div>
         <div class="banner" @click="handleGallary">
-            <img src="http://img1.qunarzz.com/sight/p0/201404/23/04b92c99462687fa1ba45c1b5ba4ad77.jpg_600x330_bf9c4904.jpg" class="banner-img">
+            <img :src="bannerImg" class="banner-img">
             <div class="banner-info">
                 <div class="banner-title">
-                    大连圣亚海洋世界(AAAA景区)
+                    {{sightName}}
                 </div>
                 <div class="banner-number">
                     <span class="iconfont banner-icon">&#xe6e5;</span>
-                    22
+                    {{gallaryImgs.length}}
                 </div>
             </div>
         </div>
 
         <common-fade-transition>
-          <common-gallary v-if="showGallary" @close="handleBannerColse">
+          <common-gallary :imgs="gallaryImgs" v-if="showGallary" @close="handleBannerColse">
           </common-gallary>
         </common-fade-transition>
     </div>
@@ -28,6 +28,11 @@ export default {
   components: {
     CommonGallary,
     CommonFadeTransition
+  },
+  props: {
+    sightName: String,
+    bannerImg: String,
+    gallaryImgs: Array
   },
   data () {
     return {
